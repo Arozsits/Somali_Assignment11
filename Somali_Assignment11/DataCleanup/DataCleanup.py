@@ -1,4 +1,4 @@
-# File Name : Somali_Assignment11
+# File Name : DataCleanup.py
 # Student Name: Andrew Rozsits, Liam Vasey
 # email:  rozsitaj@mail.uc.edu, vaseylh@mail.uc.edu
 # Assignment Number: Assignment 11
@@ -10,16 +10,30 @@
 # Brief Description of what this module does. This module shows us how to clean data using python and external APIs
 # Citations: chatgpt.com
 
-
 import re
 import requests
 from decimal import Decimal, ROUND_HALF_UP
 
 class FuelCleaner:
+    """
+    Class to clean fuel purchase data.
+    """
+
     def __init__(self, input_rows):
+        """
+        @param input_rows: List of dictionaries, each representing a row from the CSV file.
+        """
         self.rows = input_rows
 
     def clean(self):
+        """
+        Cleans the input data:
+        - Removes duplicates
+        - Formats Gross Price to 2 decimal places
+        - Filters out 'Pepsi' rows into a separate anomalies list
+
+        @returns: Tuple of (cleaned_data_list, anomalies_list)
+        """
         original_len = len(self.rows)
         seen = set()
         cleaned = []
@@ -46,6 +60,14 @@ class FuelCleaner:
         return cleaned, anomalies
 
     def _log_summary(self, original, cleaned, anomalies, dups):
+        """
+        Logs a summary of the cleaning process.
+
+        @param original: Number of original rows
+        @param cleaned: Number of cleaned rows
+        @param anomalies: Number of anomaly rows
+        @param dups: Number of duplicates removed
+        """
         print("")
         print("CLEANING SUMMARY")
         print("Original rows:      ", original)
@@ -55,9 +77,21 @@ class FuelCleaner:
         print("")
 
 def has_zip(address):
+    """
+    Checks if a valid 5-digit ZIP code is present in the address.
+
+    @param address: Full address string
+    @returns: True if ZIP is found, False otherwise
+    """
     return bool(re.search(r'\b\d{5}\b', str(address).strip()))
 
 def extract_city_state(address):
+    """
+    Extracts the city and state from a given address string.
+
+    @param address: Full address string
+    @returns: Tuple (city, state) or (None, None) if extraction fails
+    """
     try:
         parts = [p.strip() for p in str(address).split(',') if p.strip()]
         for i, part in enumerate(parts):
@@ -70,6 +104,15 @@ def extract_city_state(address):
     return None, None
 
 def fill_zip(address, api_key, zip_count, zip_limit):
+    """
+    Looks up and appends a ZIP code to the address using Zipcodebase API.
+
+    @param address: The full address missing a ZIP
+    @param api_key: Your Zipcodebase API key
+    @param zip_count: Current number of successful ZIP lookups
+    @param zip_limit: Maximum allowed ZIP lookups
+    @returns: Tuple (updated_address, updated_zip_count)
+    """
     if zip_count >= zip_limit or not address or has_zip(address):
         return address, zip_count
 
@@ -87,7 +130,7 @@ def fill_zip(address, api_key, zip_count, zip_limit):
                 'state': state,
                 'country': 'US'
             },
-            timeout=5  # Prevent hanging
+            timeout=5
         )
         if response.status_code == 200:
             data = response.json()

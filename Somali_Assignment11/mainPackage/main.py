@@ -1,4 +1,4 @@
-# File Name : Somali_Assignment11
+# File Name : main.py
 # Student Name: Andrew Rozsits, Liam Vasey
 # email:  rozsitaj@mail.uc.edu, vaseylh@mail.uc.edu
 # Assignment Number: Assignment 11
