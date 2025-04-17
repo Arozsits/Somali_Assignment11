@@ -8,7 +8,7 @@
 # Brief Description of the assignment: This assignment involves building a data cleaning tool that processes a CSV file by removing duplicates and anomalies. While also correcting data using an API.
 
 # Brief Description of what this module does. This module shows us how to clean data using python and external APIs
-# Citations: chatgpt.com
+# Citations: chatgpt.com,
 
 import re
 import requests
