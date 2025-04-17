@@ -1,4 +1,16 @@
-# main.py
+# File Name : Somali_Assignment11
+# Student Name: Andrew Rozsits, Liam Vasey
+# email:  rozsitaj@mail.uc.edu, vaseylh@mail.uc.edu
+# Assignment Number: Assignment 11
+# Due Date:   04/17/2025
+# Course #/Section:   IS 4010-001
+# Semester/Year:   Spring 2025
+# Brief Description of the assignment: This assignment involves building a data cleaning tool that processes a CSV file by removing duplicates and anomalies. While also correcting data using an API.
+
+# Brief Description of what this module does. This module shows us how to clean data using python and external APIs
+# Citations: chatgpt.com
+
+
 
 import csv
 import os
