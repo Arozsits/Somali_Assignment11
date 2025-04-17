@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d0b44ab4-92ee-490e-b4c9-1bf4e3b01e7a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Somali_Assignment11.py</StartupFile>
+    <StartupFile>mainPackage\main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,25 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Somali_Assignment11.py" />
+    <Compile Include="DataCleanup\DataCleanup.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataCleanup\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mainPackage\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mainPackage\main.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataCleanup\" />
+    <Folder Include="mainPackage\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\dataAnomalies.csv" />
+    <Content Include="Data\fuelPurchaseData.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
