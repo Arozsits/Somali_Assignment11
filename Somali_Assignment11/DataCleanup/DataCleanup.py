@@ -1,3 +1,3 @@
 # DataCleanup.py
-# Andrew Rozsits
+
 
